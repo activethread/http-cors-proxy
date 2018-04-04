@@ -1,0 +1,27 @@
+{
+  "name": "http-cors-proxy",
+  "description": "HTTP Cors Proxy",
+  "version": "0.0.3",
+  "author": "Geraldo Felipe <geraldofelipe@gmail.com>",
+  "license": "MIT License",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/activethread/http-cors-proxy.git"
+  },
+  "keywords": [
+    "http",
+    "cors",
+    "proxy"
+  ],
+  "preferGlobal": true,
+  "dependencies": {
+    "express": "~4.16.3",
+    "request": "~2.85.0",
+    "body-parser": "~1.18.2",
+    "cors": "~2.8.4",
+    "commander": "~2.15.1"
+  },
+  "bin": {
+    "http-cors-proxy": "./bin/http-cors-proxy.js"
+  }
+}
