@@ -9,7 +9,7 @@ var app = express();
 var program = require('commander');
 
 program
-    .version('0.0.3')
+    .version('0.0.4')
     .option('-P, --port <port>', 'Local port', 3000)
     .option('-p, --path <api path>', 'API redirect path', '')
     .option('-r, --remote <http address>', 'Remote address', 'http://localhost:8080')
