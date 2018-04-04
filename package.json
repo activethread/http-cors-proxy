@@ -1,7 +1,7 @@
 {
   "name": "http-cors-proxy",
   "description": "HTTP Cors Proxy",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "Geraldo Felipe <geraldofelipe@gmail.com>",
   "license": "ISC",
   "repository": {
