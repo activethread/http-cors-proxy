@@ -3,7 +3,7 @@
   "description": "HTTP Cors Proxy",
   "version": "0.0.3",
   "author": "Geraldo Felipe <geraldofelipe@gmail.com>",
-  "license": "MIT License",
+  "license": "ISC",
   "repository": {
     "type": "git",
     "url": "https://github.com/activethread/http-cors-proxy.git"
