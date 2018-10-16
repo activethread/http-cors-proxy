@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
 'use strict';
+var fs = require('fs');
+var https = require('https');
 var express = require('express');
 var request = require('request');
 var bodyParser = require('body-parser');
@@ -9,7 +11,8 @@ var app = express();
 var program = require('commander');
 
 program
-    .version('0.0.4')
+    .version('0.0.5')
+    .option('-s, --ssl', 'SSL enable', false)
     .option('-P, --port <port>', 'Local port', 3000)
     .option('-p, --path <api path>', 'API redirect path', '')
     .option('-r, --remote <http address>', 'Remote address', 'http://localhost:8080')
@@ -45,6 +48,19 @@ app.all('*', function (req, res, next) {
 
 app.set('port', program.port);
 
-app.listen(app.get('port'), function () {
-    console.log('HTTP CORS Proxy listening on port ' + app.get('port'), 'with params:', '\nPath:', program.path, '\nRemote:', program.remote, '\nOrigin:', program.origin);
-});
+if (program.ssl) {
+    var options = {
+        key: fs.readFileSync('./bin/server.key'),
+        cert: fs.readFileSync('./bin/server.crt'),
+        requestCert: false,
+        rejectUnauthorized: false
+    };
+
+    https.createServer(options, app).listen(app.get('port'), function(){
+        console.log('HTTPS CORS Proxy listening on port ' + app.get('port'), 'with params:', '\nPath:', program.path, '\nRemote:', program.remote, '\nOrigin:', program.origin); 
+    });    
+} else {
+    app.listen(app.get('port'), function () {
+        console.log('HTTP CORS Proxy listening on port ' + app.get('port'), 'with params:', '\nPath:', program.path, '\nRemote:', program.remote, '\nOrigin:', program.origin);
+    });
+}
